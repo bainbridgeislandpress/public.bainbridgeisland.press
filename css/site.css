@@ -104,6 +104,7 @@ a:hover {
 
 .nav {
   display: flex;
+  align-items: center;
   gap: 1.5rem;
   font-size: 0.9rem;
   font-weight: 500;
@@ -118,6 +119,26 @@ a:hover {
 .nav a:hover,
 .nav a[aria-current="page"] {
   color: var(--green);
+}
+
+.nav .nav-end {
+  margin-left: 0.5rem;
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--rule);
+}
+
+.project-description .submit-list {
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
+  color: var(--ink-muted);
+}
+
+.project-description .submit-list li {
+  margin-bottom: 0.45rem;
+}
+
+.project-description .submit-list li:last-child {
+  margin-bottom: 0;
 }
 
 /* —— Hero —— */
