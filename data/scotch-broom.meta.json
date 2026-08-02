@@ -1,0 +1,8 @@
+{
+  "_comment": "Optional metadata for Scotch Broom broadsides, keyed by period (MMMYY, e.g. AUG26). Fields: artist, title, label (subtitle under the month).",
+  "AUG26": {
+    "artist": "Tamarah Rockwood",
+    "title": "The Sex Lives of Trees",
+    "label": "Tamarah Rockwood"
+  }
+}

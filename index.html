@@ -3,476 +3,143 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Scotch Broom — Bainbridge Island Press</title>
-  <meta name="description" content="Scotch Broom is a public art project that prints poetry broadsides and distributes them in Free Little Libraries across Bainbridge Island monthly.">
+  <title>Public Art — Bainbridge Island Press</title>
+  <meta name="description" content="Public art projects from Bainbridge Island Press: Scotch Broom poetry broadsides and POETICS zines, placed across Bainbridge Island.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --cream: #f4efe6;
-      --cream-dark: #ebe4d6;
-      --paper: #faf7f0;
-      --ink: #1c1a17;
-      --ink-muted: #5c564c;
-      --green: #2a4a38;
-      --green-deep: #1e3529;
-      --gold: #c9a227;
-      --gold-soft: #e8d59a;
-      --rule: rgba(42, 74, 56, 0.18);
-      --shadow: 0 12px 40px rgba(28, 26, 23, 0.12);
-      --radius: 2px;
-      --max: 68rem;
-      --measure: 38rem;
-    }
-
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: "Source Sans 3", system-ui, sans-serif;
-      font-size: 1.0625rem;
-      line-height: 1.65;
-      color: var(--ink);
-      background:
-        radial-gradient(ellipse 120% 80% at 50% -20%, rgba(201, 162, 39, 0.08), transparent 55%),
-        linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%);
-      min-height: 100vh;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .visually-hidden {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
-
-    a {
-      color: var(--green);
-      text-decoration-thickness: 1px;
-      text-underline-offset: 0.18em;
-      transition: color 0.15s ease;
-    }
-
-    a:hover {
-      color: var(--green-deep);
-    }
-
-    /* —— Layout —— */
-    .wrap {
-      width: min(100% - 2.5rem, var(--max));
-      margin-inline: auto;
-    }
-
-    /* —— Header —— */
-    .site-header {
-      padding: 1.75rem 0 0;
-    }
-
-    .site-header .wrap {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding-bottom: 1.25rem;
-      border-bottom: 1px solid var(--rule);
-    }
-
-    .brand-mark {
-      font-family: "EB Garamond", Georgia, serif;
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--green);
-      text-decoration: none;
-    }
-
-    .brand-mark:hover {
-      color: var(--green-deep);
-    }
-
-    .nav {
-      display: flex;
-      gap: 1.5rem;
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-    }
-
-    .nav a {
-      color: var(--ink-muted);
-      text-decoration: none;
-    }
-
-    .nav a:hover {
-      color: var(--green);
-    }
-
-    /* —— Hero —— */
-    .hero {
-      padding: 4.5rem 0 3.5rem;
-      text-align: center;
-    }
-
-    .hero-wordmark {
-      width: min(100%, 28rem);
-      margin: 0 auto 2rem;
-    }
-
-    .hero-lede {
-      font-family: "EB Garamond", Georgia, serif;
-      font-size: clamp(1.25rem, 2.4vw, 1.5rem);
-      font-weight: 400;
-      line-height: 1.55;
-      color: var(--ink);
-      max-width: 36rem;
-      margin: 0 auto 1.25rem;
-    }
-
-    .hero-meta {
-      font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-    }
-
-    .hero-ornament {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      margin: 2.25rem auto 0;
-      max-width: 16rem;
-      color: var(--gold);
-    }
-
-    .hero-ornament::before,
-    .hero-ornament::after {
-      content: "";
-      flex: 1;
-      height: 1px;
-      background: var(--rule);
-    }
-
-    .hero-ornament span {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-    }
-
-    /* —— About —— */
-    .about {
-      padding: 0 0 4rem;
-    }
-
-    .about-card {
-      max-width: 40rem;
-      margin: 0 auto;
-      padding: 2rem 2.25rem;
-      background: var(--paper);
-      border: 1px solid var(--rule);
-      box-shadow: var(--shadow);
-    }
-
-    .about-card p {
-      margin: 0;
-      color: var(--ink-muted);
-      font-size: 1.05rem;
-    }
-
-    .about-card p + p {
-      margin-top: 1rem;
-    }
-
-    .about-card .credit {
-      margin-top: 1.25rem;
-      padding-top: 1.25rem;
-      border-top: 1px solid var(--rule);
-      font-size: 0.95rem;
-      font-style: italic;
-      font-family: "EB Garamond", Georgia, serif;
-      color: var(--ink-muted);
-    }
-
-    /* —— Gallery —— */
-    .gallery {
-      padding: 1rem 0 5rem;
-    }
-
-    .section-head {
-      text-align: center;
-      margin-bottom: 2.5rem;
-    }
-
-    .section-head h2 {
-      font-family: "EB Garamond", Georgia, serif;
-      font-size: clamp(1.75rem, 3vw, 2.15rem);
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      margin: 0 0 0.4rem;
-      color: var(--green-deep);
-    }
-
-    .section-head p {
-      margin: 0;
-      font-size: 0.95rem;
-      color: var(--ink-muted);
-    }
-
-    .poster-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
-      gap: 2rem;
-      max-width: 48rem;
-      margin: 0 auto;
-      justify-items: center;
-    }
-
-    /* Single issue: center it more generously */
-    .poster-grid:has(.poster-card:only-child) {
-      grid-template-columns: minmax(14rem, 18rem);
-      justify-content: center;
-    }
-
-    .poster-card {
-      width: 100%;
-      text-align: center;
-    }
-
-    .poster-link {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .poster-frame {
-      position: relative;
-      background: var(--paper);
-      padding: 0.65rem;
-      border: 1px solid var(--rule);
-      box-shadow: var(--shadow);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .poster-link:hover .poster-frame,
-    .poster-link:focus-visible .poster-frame {
-      transform: translateY(-4px);
-      box-shadow: 0 18px 48px rgba(28, 26, 23, 0.16);
-    }
-
-    .poster-link:focus-visible {
-      outline: none;
-    }
-
-    .poster-link:focus-visible .poster-frame {
-      outline: 2px solid var(--green);
-      outline-offset: 3px;
-    }
-
-    .poster-frame img {
-      width: 100%;
-      aspect-ratio: 612 / 1008;
-      object-fit: cover;
-      background: #f0ebe0;
-    }
-
-    .poster-caption {
-      margin-top: 1rem;
-    }
-
-    .poster-caption .month {
-      font-family: "EB Garamond", Georgia, serif;
-      font-size: 1.2rem;
-      font-weight: 500;
-      color: var(--ink);
-      letter-spacing: 0.02em;
-    }
-
-    .poster-caption .artist {
-      display: block;
-      margin-top: 0.2rem;
-      font-size: 0.85rem;
-      color: var(--ink-muted);
-      font-style: italic;
-      font-family: "EB Garamond", Georgia, serif;
-    }
-
-    .poster-caption .action {
-      display: inline-block;
-      margin-top: 0.65rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--green);
-    }
-
-    .poster-link:hover .action {
-      color: var(--green-deep);
-    }
-
-    /* —— Footer —— */
-    .site-footer {
-      border-top: 1px solid var(--rule);
-      padding: 2.5rem 0 3rem;
-      background: rgba(250, 247, 240, 0.55);
-    }
-
-    .footer-inner {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.25rem;
-      text-align: center;
-    }
-
-    .footer-logo {
-      width: min(100%, 22rem);
-      opacity: 0.92;
-    }
-
-    .footer-text {
-      margin: 0;
-      font-size: 0.85rem;
-      color: var(--ink-muted);
-      max-width: 28rem;
-      line-height: 1.55;
-    }
-
-    .footer-text a {
-      font-weight: 500;
-    }
-
-    /* —— Responsive —— */
-    @media (max-width: 520px) {
-      .site-header .wrap {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.75rem;
-      }
-
-      .hero {
-        padding: 3rem 0 2.5rem;
-      }
-
-      .about-card {
-        padding: 1.5rem 1.35rem;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      .poster-frame {
-        transition: none;
-      }
-
-      .poster-link:hover .poster-frame {
-        transform: none;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
   <header class="site-header">
     <div class="wrap">
-      <a class="brand-mark" href="#">Scotch Broom</a>
+      <a class="brand-mark" href="/">Bainbridge Island Press Public Art</a>
       <nav class="nav" aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#gallery">Gallery</a>
+        <a href="/" aria-current="page">Home</a>
+        <a href="/scotch-broom/">Scotch Broom</a>
+        <a href="/poetics-zine/">POETICS Zine</a>
       </nav>
     </div>
   </header>
 
   <main>
     <section class="hero wrap" aria-labelledby="hero-title">
-      <h1 id="hero-title" class="visually-hidden">Scotch Broom</h1>
-      <img
-        class="hero-wordmark"
-        src="images/ScotchBroom-wordmark.svg"
-        alt="Scotch Broom"
-        width="448"
-      >
+      <h1 id="hero-title" class="visually-hidden">Bainbridge Island Press Public Art</h1>
       <p class="hero-lede">
-        Poetry broadsides, printed and placed in Free Little Libraries across Bainbridge Island—one each month.
+        Free printed poetry for the island—broadsides and zines made to be found, read, and shared.
       </p>
-      <p class="hero-meta">A public art project</p>
       <div class="hero-ornament" aria-hidden="true"><span>✦</span></div>
     </section>
 
-    <section class="about wrap" id="about" aria-labelledby="about-title">
-      <h2 id="about-title" class="visually-hidden">About</h2>
-      <div class="about-card">
-        <p>
-          Scotch Broom prints poetry broadsides and distributes them in Free Little Libraries across Bainbridge Island monthly.
-        </p>
-        <p class="credit">
-          It owes a debt to the pioneering work of Karen Sawyer’s Heavy Jeens project in Bremerton, WA.
-        </p>
-      </div>
-    </section>
-
-    <section class="gallery wrap" id="gallery" aria-labelledby="gallery-title">
+    <section class="projects wrap" id="projects" aria-labelledby="projects-title">
       <div class="section-head">
-        <h2 id="gallery-title">Broadsides</h2>
-        <p>Click a poster to view full size</p>
+        <h2 id="projects-title">Latest Issues</h2>
+        <p>Click an issue to view full size or download · <a href="/scotch-broom/">all broadsides</a> · <a href="/poetics-zine/">all zines</a></p>
       </div>
 
-      <div class="poster-grid">
-        <article class="poster-card">
-          <a class="poster-link" href="posters/SBPoster-AUG26-v2.png" target="_blank" rel="noopener noreferrer">
-            <div class="poster-frame">
+      <div class="project-columns">
+        <!-- Scotch Broom -->
+        <section class="project-panel" id="scotch-broom" aria-labelledby="scotch-broom-title">
+          <header class="project-header">
+            <h3 id="scotch-broom-title" class="visually-hidden">Scotch Broom</h3>
+            <a href="/scotch-broom/">
               <img
-                src="posters/SBPoster-AUG26-v2.jpg"
-                alt="Poetry broadside: The Sex Lives of Trees by Tamarah Rockwood, August 2026"
-                width="612"
-                height="1008"
-                loading="lazy"
+                class="project-wordmark"
+                src="images/ScotchBroom-wordmark.svg"
+                alt="Scotch Broom"
+                width="256"
               >
-            </div>
-            <div class="poster-caption">
-              <span class="month">August 2026</span>
-              <span class="artist">Tamarah Rockwood</span>
-              <span class="action">View full size →</span>
-            </div>
-          </a>
-        </article>
+            </a>
+            <p class="project-blurb">
+              Poetry broadsides, printed and placed in Free Little Libraries across Bainbridge Island—one each month.
+            </p>
+            <span class="project-label">Broadsides</span>
+          </header>
+
+          <!-- LATEST:SCOTCH-BROOM:START -->
+          <div class="item-grid">
+            <article class="item-card">
+              <a class="item-link" href="scotch-broom/SBPoster-AUG26-v2.png" target="_blank" rel="noopener noreferrer">
+                <div class="item-frame item-frame--broadside">
+                  <img
+                    src="scotch-broom/SBPoster-AUG26-v2.jpg"
+                    alt="Poetry broadside: The Sex Lives of Trees by Tamarah Rockwood, August 2026"
+                    width="612"
+                    height="1008"
+                    loading="lazy"
+                  >
+                </div>
+                <div class="item-caption">
+                  <span class="month">August 2026</span>
+                  <span class="artist">Tamarah Rockwood</span>
+                  <span class="action">View full size →</span>
+                </div>
+              </a>
+            </article>
+          </div>
+          <!-- LATEST:SCOTCH-BROOM:END -->
+
+          <a class="project-more" href="/scotch-broom/">View all broadsides →</a>
+        </section>
+
+        <!-- POETICS -->
+        <section class="project-panel" id="poetics" aria-labelledby="poetics-title">
+          <header class="project-header">
+            <h3 id="poetics-title" class="visually-hidden">POETICS</h3>
+            <a href="/poetics-zine/">
+              <img
+                class="project-wordmark project-wordmark--poetics"
+                src="images/POETICS-wordmark.svg"
+                alt="POETICS"
+                width="192"
+              >
+            </a>
+            <p class="project-blurb">
+              A free poetry zine from Bainbridge Island Press—collected work for readers across the island.
+            </p>
+            <span class="project-label">Zines</span>
+          </header>
+
+          <!-- LATEST:POETICS:START -->
+          <div class="item-grid">
+            <article class="item-card">
+              <a class="item-link" href="poetics-zine/POETICS-Zine-0626.pdf" target="_blank" rel="noopener noreferrer">
+                <div class="item-frame item-frame--zine">
+                  <img
+                    src="poetics-zine/POETICS-Zine-0626.jpg"
+                    alt="POETICS zine cover: POETICS Zine, June 2026"
+                    width="396"
+                    height="612"
+                    loading="lazy"
+                  >
+                </div>
+                <div class="item-caption">
+                  <span class="month">June 2026</span>
+                  <span class="artist">Issue 01</span>
+                  <span class="action">Read PDF →</span>
+                </div>
+              </a>
+            </article>
+          </div>
+          <!-- LATEST:POETICS:END -->
+
+          <a class="project-more" href="/poetics-zine/">View all zines →</a>
+        </section>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="wrap footer-inner">
-      <img
-        class="footer-logo"
-        src="images/BIP-wordmark.svg"
-        alt="Bainbridge Island Press"
-        width="352"
-      >
-      <p class="footer-text">
-        Published by Bainbridge Island Press · Bainbridge Island, Washington
-      </p>
-    </div>
+    <img
+      class="footer-banner"
+      src="images/BIP-PoetryLivesHere.svg"
+      alt="Bainbridge Island Press — Poetry Lives Here"
+      width="2250"
+      height="420"
+    >
+    <p class="footer-credit">
+      Published by Bainbridge Island Press · Bainbridge Island, Washington
+    </p>
   </footer>
 </body>
 </html>

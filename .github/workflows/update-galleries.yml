@@ -1,0 +1,45 @@
+name: Update galleries
+
+on:
+  # Rebuild whenever project assets or metadata change
+  push:
+    branches: [main]
+    paths:
+      - "scotch-broom/**"
+      - "poetics-zine/**"
+      - "data/**"
+      - "scripts/build_galleries.py"
+  # Allow manual runs from the Actions tab
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Required so the commit action can push back to main
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build galleries
+        run: python3 scripts/build_galleries.py
+
+      - name: Commit gallery updates
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: rebuild galleries from new posters/zines"
+          file_pattern: |
+            index.html
+            scotch-broom/index.html
+            poetics-zine/index.html
+          commit_user_name: github-actions[bot]
+          commit_user_email: github-actions[bot]@users.noreply.github.com
